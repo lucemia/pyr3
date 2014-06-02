@@ -1,6 +1,6 @@
 def setup():
-    import noddy
-    r = noddy.R3Tree()
+    import pyr3
+    r = pyr3.R3Tree()
     print r
     print dir(r)
     r.insert_path(path="/bar", data='4')
