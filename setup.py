@@ -10,18 +10,6 @@ setup(name="pyr3", version="1.0",
 )])
 
 try:
-    import pyr3
-    r = pyr3.R3Tree()
-    print r
-    print dir(r)
-    r.insert_path(path="/bar", data=0)
-    r.insert_path(path="/zoo", data=1)
-    r.insert_path(path="/foo/bar", data='123')
-    r.compile()
-
-    print r.match('/foo/bar')
+    import setup_test
 except:
-    raise
-finally:
-    import os
-    os.remove('pyr3.so')
+    pass
