@@ -17,3 +17,11 @@ r.compile()
 
 print r.match('/foo/bar')
 ```
+
+### Build
+
+    git clone https://github.com/lucemia/pyr3
+    git submodule init
+    git submodule update
+    python setup.py build
+
