@@ -1,15 +1,19 @@
-from distutils.core import setup, Extension
-setup(name="pyr3", version="1.0",
-    ext_modules=[Extension(
-    "pyr3",
-    ["pyr3.c"],
-    libraries=["pcre","r3"],
-    include_dirs=['./r3/include', './r3', '/opt/local/include'],
-    library_dirs=['/usr/local/lib', '/opt/local/lib'],
-    runtime_library_dirs=['/usr/local/lib']
-)])
+from distutils.core import setup
+from distutils.extension import Extension
+from Cython.Distutils import build_ext
 
-try:
-    import setup_test
-except:
-    pass
+import os
+fs = ['./r3/src/%s'%k for k in os.listdir('./r3/src') if k.endswith('.c') and 'gvc' not in k and 'json' not in k]
+
+setup(
+    cmdclass = {'build_ext': build_ext},
+    ext_modules = [Extension(
+        "pyr3",
+        ["cpyr3.pyx"] + fs + ['./r3/3rdparty/zmalloc.c'],
+        libraries=["pcre"],
+        include_dirs=['./r3/include', './r3', '/opt/local/include', './r3/3rdparty'],
+        library_dirs=['/usr/local/lib', '/opt/local/lib'],
+        extra_compile_args=['-std=c99'],
+        extra_link_args=['-std=c99']
+    )]
+)
