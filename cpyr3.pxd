@@ -1,7 +1,6 @@
-
 cdef extern from "r3.h":
     ctypedef struct node:
-        pass
+        void *data
 
     ctypedef struct edge:
         pass
@@ -15,7 +14,3 @@ cdef extern from "r3.h":
 
     int r3_tree_compile(node *n, char** errstr)
     node * r3_tree_match(const node * n, const char * path, match_entry * entry)
-
-
-
-
