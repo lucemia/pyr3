@@ -19,4 +19,4 @@ def run(r):
 
 r = setup()
 for i in xrange(10000):
-    run(r)
+    print run(r)
